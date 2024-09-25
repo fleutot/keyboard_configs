@@ -1,0 +1,73 @@
+(defcfg
+  ;; Linux
+  input  (device-file "/dev/input/by-id/usb-05f3_0007-event-kbd") ;; Kinesis Advantage
+  ;; input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd") ;; Builtin laptop keyboard
+  output (uinput-sink
+  	 "KMonad output"
+  	 "sleep 0.2s; setxkbmap -layout se")
+
+  ;; Windows
+  ;; input  (low-level-hook)
+  ;; output (send-event-sink)
+
+  ;; MacOS
+  ;; input  (iokit-name "my-keyboard-product-string")
+  ;; output (kext)
+
+  fallthrough true
+)
+
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt          spc           ralt 
+)
+
+(defalias
+  nav  (tap-hold 180 e (layer-toggle navigation))
+  num  (tap-hold 180 o (layer-toggle numpad))
+  specu (tap-hold 180 u (layer-toggle special))
+  ospech (tap-hold 180 h (layer-toggle special))
+  sqop RA-8
+  sqcl RA-9
+  at     RA-2
+)
+
+(deflayer svorak
+  grv  1    2      3     4      5    6    7     8    9    0    -    =    bspc
+  tab  [    '      ;     p      y    f    g     c    r    l    ,    =    \
+  caps a   @num   @nav  @specu  i    d   @spech t    n    s    -    ret
+  lsft .    q      j     k      x    b    m     w    v    z    rsft
+  lctl lmet lalt             spc           ralt
+)
+
+
+(deflayer navigation
+  _    _    _    _    _    _    _    _     _    _     _    _    _    _
+  _    _    _    _    _    _    _    _     up   _     _    _    _    _
+  _    _    _    _    _    _    _    left down right  _    _    _    
+  _    _    _    _    _    _    _    _     _    _     _    _
+  _    _    _              _              _    
+)
+
+(deflayer numpad
+  _    _    _    _    _    _    _    _     _    _     _    _    _    _
+  _    _    _    _    _    _    /    7     8    9     -    _    _    _
+  _    _    _    _    _    _    *    4     5    6     +    _    _    
+  _    _    _    _    _    _    0    1     2    3     _    _
+  _    _    _              _              _    
+)
+
+(deflayer special
+  _    _    _    _    _    _    _    _     _    _      _     _    _    _
+  _    S-1  @at  S-#  RA-4 S-5  S-6   S-8  S-9  @sqop  @sqcl _    _    _
+  _    _    _    _    _    _    _    _     _    _      S-,   ;    _    
+  _    _    _    _    _    _    _    _     _    .      S-7   _
+  _    _    _              _              _    
+)
+
+
