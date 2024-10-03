@@ -1,0 +1,102 @@
+(defcfg
+  ;; Linux
+  input  (device-file "/dev/input/by-id/usb-05f3_0007-event-kbd") ;; Kinesis Advantage
+  ;; input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd") ;; Builtin laptop keyboard
+  output (uinput-sink
+  	 "KMonad output"
+	 "sleep 0.2s; setxkbmap -option compose:menu")
+
+  cmp-seq compose
+  cmp-seq-delay 1
+
+  ;; Windows
+  ;; input  (low-level-hook)
+  ;; output (send-event-sink)
+
+  ;; MacOS
+  ;; input  (iokit-name "my-keyboard-product-string")
+  ;; output (kext)
+
+  fallthrough true
+)
+
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt          spc           ralt    rmet
+)
+
+(defalias
+  navE  (tap-hold-next-release 300 e (layer-toggle navigation))
+  navT  (tap-hold-next-release 300 t (layer-toggle navigation))
+  numO  (tap-hold-next-release 300 o (layer-toggle numpad))
+  numN  (tap-hold-next-release 300 n (layer-toggle numpad))
+  specU (tap-hold-next-release 300 u (layer-toggle special))
+  specH (tap-hold-next-release 300 h (layer-toggle special))
+  copyQ (tap-hold-next-release 300 q (layer-toggle copy))
+;;  lsftc (around lsft (layer-toggle shift_composed))
+;;  rsftc (around-when-alone rsft (layer-toggle shift_composed))
+  xmo   (around rmet (layer-toggle xmonad))
+)
+
+(deflayer svorak
+  grv    1    2      3     4      5    6    7      8     9     0    -    =    bspc
+  tab    å    ä      ö     p      y    f    g      c     r     l    _    _    '
+  caps   a   @numO  @navE  @specU i    d   @specH @navT @numN  s    -    ret
+  lsft   '   @copyQ  j     k      x    b    m      w     v     z    rsft
+  lctl  @xmo  lalt             spc           ralt   @xmo
+)
+
+(deflayer navigation
+  _    _    _      _       _         _    _    _     _    _     _    _    _    _
+  _    _    _      C-up    _         pgup _    home  up   end   _    _    _    _
+  _    _    C-left C-down  C-right   pgdn _    left down right  _    _    _
+  _    _    _      _       _         _    _    _     _    _     _    _
+  _    _    _              _              _       _
+)
+
+(deflayer numpad
+  _    _    _    _    _    _    _    _     _    _     _    _    _    _
+  _    f9   f10  f11  f12  _    /    7     8    9     =    -    _    _
+  _    f5   f6   f7   f8   _    *    4     5    6     ,    +    _
+  _    F1   f2   f3   f4   _    0    1     2    3     .    _
+  _    _    _              _              _    _
+)
+
+(deflayer special
+  _    _    _    _    _    _    _    _     _    _    _    _    _    _
+  _    `    ~    <    >    _    _    [     ]    {    }    _    _    \
+  _    !    @    #    $    %    ^    &     \(   \)   ;    '    _
+  _    ?    :    _    _    _    _    _     ,    .    /    _
+  _    _    _              _              _      _
+)
+
+(deflayer copy
+  _    _    _    _      _       _    _    _     _    _    _    _    _    _
+  _    _    _    C-S-c  C-S-v   _    _    _     _    _    _    _    _    _
+  _    _    _    C-c    C-v     C-x  _    _     _    _    _    _    _
+  _    C-z  _    _      _       _    _    _     _    _    _    _
+  _    _    _              _              _       _
+)
+
+;; This looks a lot like qwerty, because I want to keep a single xmonad config,
+;; and many commands make sense positionally.
+(deflayer xmonad
+  _    _    _    _    _    _      _    _     _    _    _    _    _    _
+  _    1    2    3    4    5      6    7     8    9    p    _    _    _
+  _    q    w    e    r    t      h    j     k    l    _    _    _
+  _    a    z    c    f    _      _    m     ,    .    _    _
+  _    _    _              _              _       _
+)
+
+;;(deflayer shift_composed
+;;  _    _    _    _    _    _      _    _     _    _    _    \_   +    _
+;;  _    Å    Ä    Ö    P    Y      F    G     C    R    L    _    _    _
+;;  _    A    O    E    U    I      D    H     T    N    S    \_   _
+;;  XX   "    Q    J    K    X      B    M     W    V    Z    XX
+;;  _    _    _              _              _      _
+;;)
