@@ -44,10 +44,10 @@
 )
 
 (deflayer svorak
-  XX     Å    XX     XX    XX     XX   XX   XX     XX    XX    XX   XX   XX   _
+  XX     XX   XX     XX    XX     XX   XX   XX     XX    XX    XX   XX   XX   _
   XX     å    ä      ö     p      y    f    g      c     r     l    XX   XX   XX
   caps   a   @numO  @navE  @specU i    d   @specH @navT @numN  s    XX   ret
-  lsft   '   @copyQ  j     k      x    b    m      w     v     z   rsft
+  lsft   Å   @copyQ  j     k      x    b    m      w     v     z   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
 )
 
@@ -71,7 +71,7 @@
   _    _    _    _    _    _    _    _     _    _    _    _    _    _
   _    `    ~    <    >    |    \    [     ]    {    }    _    _    _
   _    !    @    #    $    %    ^    &     \(   \)   ;    _    _
-  _    ?    :    \_   -    +    *    =     ,    .    /    _
+  _    ?    :    \_   -    +    *    '     ,    .    /    _
   _    _    _              _              _      _
 )
 
