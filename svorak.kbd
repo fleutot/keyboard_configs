@@ -53,8 +53,8 @@
 
 (deflayer navigation
   _    _    _      _       _         _    _    _     _    _     _    _    _    _
-  _    _    _      C-up    _         pgup _    home  up   end   _    _    _    _
-  _    _    C-left C-down  C-right   pgdn _    left down right  _    _    _
+  _    _    esc    C-up    _         pgup _    home  up   end   _    _    _    _
+  _    tab  C-left C-down  C-right   pgdn _    left down right  _    _    _
   _    _    _      _       _         _    _    _     _    _     _    _
   _    _    _              _              _       _
 )
