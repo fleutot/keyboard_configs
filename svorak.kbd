@@ -44,10 +44,10 @@
 )
 
 (deflayer svorak
-  grv    Å    2      3     4      5    6    7      8     9     0    -    =    bspc
-  tab    å    ä      ö     p      y    f    g      c     r     l    _    _    '
-  caps   a   @numO  @navE  @specU i    d   @specH @navT @numN  s    -    ret
-  lsft  '   @copyQ  j     k      x    b    m      w     v     z   rsft
+  XX     Å    XX     XX    XX     XX   XX   XX     XX    XX    XX   XX   XX   _
+  XX     å    ä      ö     p      y    f    g      c     r     l    XX   XX   XX
+  caps   a   @numO  @navE  @specU i    d   @specH @navT @numN  s    XX   ret
+  lsft   '   @copyQ  j     k      x    b    m      w     v     z   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
 )
 
