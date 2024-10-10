@@ -89,7 +89,7 @@
 (deflayer xmonad
   _    _    _    _    _    _      _    _     _    _    _    _    _    _
   _    1    2    3    4    5      6    7     8    9    p    _    _    _
-  _    q    w    e    r    t      h    j     k    l    _    _    _
+  _    q    w    e    r    t      h    j     k    l    c    _    _
   _    a    z    c    f    _      _    m     ,    .    _    _
   _    _    _              _              _       _
 )
