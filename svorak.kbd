@@ -75,11 +75,12 @@
   _    _    _              _              _      _
 )
 
+;; sysrq is actually Print Screen, see kmonad faq.
 (deflayer copy
-  _    _    _    _      _       _    _    _     _    _    _    _    _    _
-  _    _    _    C-S-c  C-S-v   _    _    _     _    _    _    _    _    _
-  _    _    _    C-c    C-v     C-x  _    _     _    _    _    _    _
-  _    C-z  _    caps   esc     _    _    _     _    _    _    _
+  _    _    _    _      _       _    _    _     _    _    _     _    _    _
+  _    _    _    C-S-c  C-S-v   _    _    _     _    _    sysrq _    _    _
+  _    _    _    C-c    C-v     C-x  _    _     _    _    _     _    _
+  _    C-z  _    caps   esc     _    _    _     _    _    _     _
   _    _    _              _              _       _
 )
 
