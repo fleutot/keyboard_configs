@@ -28,6 +28,14 @@
   lctl lmet lalt          spc           ralt    rmet
 )
 
+;;(deflayer TEMPLATE
+;;  _    _    _    _    _    _       _    _     _    _    _    _    _    _
+;;  _    _    _    _    _    _       _    _     _    _    _    _    _    _
+;;  _    _    _    _    _    _       _    _     _    _    _    _    _
+;;  _    _    _    _    _    _       _    _     _    _    _    _
+;;  _    _    _              _              _      _
+;;)
+
 (defalias
   navD  (tap-hold-next-release 300 d (layer-toggle navigation))
   navK  (tap-hold-next-release 300 k (layer-toggle navigation))
@@ -37,17 +45,38 @@
   specF (tap-hold-next-release 300 f (layer-toggle special))
   specJ (tap-hold-next-release 300 j (layer-toggle special))
   funcA (tap-hold-next-release 300 a (layer-toggle functions))
+  intR  (tap-hold-next-release 300 r (layer-toggle international))
+  sintT (tap-hold-next-release 300 t (layer-toggle shift_international))
 ;;  lsftc (around-when-alone lsft (layer-toggle shift_composed))
 ;;  rsftc (around-when-alone rsft (layer-toggle shift_composed))
   xmo   (around rmet (layer-toggle xmonad))
 )
 
 (deflayer qwerty_swe
-  XX     XX    XX     XX    XX     XX   XX   XX     XX    XX    XX   XX   XX   _
-  XX     q     w     @snavE r      t    y    u      i     o     p    XX   XX   XX
-  XX    @funcA @numS  @navD  @specF g    h   @specJ @navK @numL ö    XX   ret
-  lsft   z     x      c     v      b    n    m      ,     å     ä   rsft
+  XX     XX    XX     XX    XX     XX     XX   XX     XX    XX    XX   XX   XX   _
+  XX     q     w     @snavE @intR  @sintT y    u      i     o     p    XX   XX   XX
+  XX    @funcA @numS  @navD @specF g      h   @specJ @navK @numL  ;    XX   ret
+  lsft   z     x      c     v      b      n    m      ,     .     /   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
+)
+
+(deflayer international
+  _    _    _    _    _    _       _    _     _    _    _    _    _    _
+  _    â    ê    é    _    _       _    û     î    ô    å    £    _    _
+  _    à    _    è    _    _       _    ù     _    ö    ä    €    _
+  _    ç    _    ë    _    _       ñ    ü     ï    œ    _    _
+  _    _    _              _              _      _
+)
+
+;; Capital accented characters require an explicit layer, because shifting
+;; a compose sequence shifts all the characters in the sequence, and Å becomes
+;; A *in* a circle.
+(deflayer shift_international
+  _    _    _    _    _    _       _    _     _    _    _    _    _    _
+  _    Â    Ê    É    _    _       _    Û     Î    Ô    Å    £    _    _
+  _    À    _    È    _    _       _    Ù     _    Ö    Ä    €    _
+  _    Ç    _    Ë    _    _       Ñ    Ü     Ï    Œ    _    _
+  _    _    _              _              _      _
 )
 
 (deflayer special
