@@ -1,0 +1,111 @@
+(defcfg
+  ;; Linux
+  input  (device-file "/dev/input/by-id/usb-05f3_0007-event-kbd") ;; Kinesis Advantage
+  ;; input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd") ;; Builtin laptop keyboard
+  output (uinput-sink
+  	 "KMonad output"
+	 "sleep 0.2s; setxkbmap -option compose:menu")
+
+  cmp-seq compose
+  cmp-seq-delay 1
+
+  ;; Windows
+  ;; input  (low-level-hook)
+  ;; output (send-event-sink)
+
+  ;; MacOS
+  ;; input  (iokit-name "my-keyboard-product-string")
+  ;; output (kext)
+
+  fallthrough true
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt          spc           ralt    rmet
+)
+
+(defalias
+  navD  (tap-hold-next-release 300 d (layer-toggle navigation))
+  navK  (tap-hold-next-release 300 k (layer-toggle navigation))
+  snavE (tap-hold-next-release 300 e (layer-toggle shift_nav))
+  numL  (tap-hold-next-release 300 l (layer-toggle numpad))
+  numS  (tap-hold-next-release 300 s (layer-toggle numpad))
+  specF (tap-hold-next-release 300 f (layer-toggle special))
+  specJ (tap-hold-next-release 300 j (layer-toggle special))
+  funcA (tap-hold-next-release 300 a (layer-toggle functions))
+;;  lsftc (around-when-alone lsft (layer-toggle shift_composed))
+;;  rsftc (around-when-alone rsft (layer-toggle shift_composed))
+  xmo   (around rmet (layer-toggle xmonad))
+)
+
+(deflayer qwerty_swe
+  XX     XX    XX     XX    XX     XX   XX   XX     XX    XX    XX   XX   XX   _
+  XX     q     w     @snavE r      t    y    u      i     o     p    XX   XX   XX
+  XX    @funcA @numS  @navD  @specF g    h   @specJ @navK @numL ö    XX   ret
+  lsft   z     x      c     v      b    n    m      ,     å     ä   rsft
+  lctl  @xmo  lalt             spc           ralt   @xmo
+)
+
+(deflayer special
+  _    _    _    _    _    _    _    _     _    _    _    _    _    _
+  _    `    ~    <    >    |    \    [     ]    {    }    _    _    _
+  _    !    @    #    $    %    ^    &     \(   \)   ;    _    _
+  _    ?    :    \_   -    +    "    '     ,    .    /    _
+  _    _    _              _              _      _
+)
+
+(deflayer navigation
+  _    _    _      _       _         _        _        _     _      _     _        _    _    _
+  _    _    _      C-up    _         pgup     _        home  up     end   _        _    _    _
+  _    tab  C-left C-down  C-right   pgdn     C-left   left  down   right C-right  _    _
+  _    _    _      _       _         _        _        C-up  C-down _     _    _
+  _    _    _              _                  _       _
+)
+
+(deflayer shift_nav
+  _    _    _      _       _         _        _        _       _        _       _          _    _    _
+  _    _    _      C-up    _         pgup     _        S-home  S-up     S-end   _          _    _    _
+  _    tab  C-left C-down  C-right   pgdn     C-S-left S-left  S-down   S-right C-S-right  _    _
+  _    _    _      _       _         _        _        C-S-up  C-S-down _       _    _
+  _    _    _              _                  _       _
+)
+
+(deflayer numpad
+  _    _    _    _    _    _    _    _     _    _     _    _    _    _
+  _    f9   f10  f11  f12  _    /    7     8    9     =    _    _    _
+  _    f5   f6   f7   f8   _    *    4     5    6     ,    _    _
+  _    F1   f2   f3   f4   _    +    1     2    3     .    _
+  _    _    _              0              _    _
+)
+
+;; sysrq is actually Print Screen, see kmonad faq.
+(deflayer functions
+  _    _    _    _      _       _    _    _     _    _    _     _    _    _
+  _    _    _    C-S-c  C-S-v   _    _    _     _    _    sysrq _    _    _
+  _    _    esc  C-c    C-v     C-x  _    _     _    _    _     _    _
+  _    _    _    caps   _       _    _    _     _    _    _     _
+  _    _    _              _              _       _
+)
+
+;; I want to keep a single xmonad config, and many commands make sense positionally.
+;; Just moving most down a row.
+(deflayer xmonad
+  _    _    _    _    _    _      _    _     _    _    _    _    _    _
+  _    1    2    3    4    5      6    7     8    9    p    _    _    _
+  _    q    w    e    r    t      h    j     k    l    c    _    _
+  _    a    z    c    f    _      _    m     ,    .    _    _
+  _    _    _              _              _       _
+)
+
+;; This breaks A-S-, M-S- and C-S- combinations! 
+;;(deflayer shift_composed
+;;  _    _    _    _    _    _      _    _     _    _    _    _   _    _
+;;  _    Å    Ä    Ö    P    Y      F    G     C    R    L    _   _    _
+;;  _    A    O    _    U    I      D    H     T    N    S    _   _
+;;  XX   "    Q    J    K    X      B    M     W    V    Z    XX
+;;  _    _    _              _              _      _
+;;)
