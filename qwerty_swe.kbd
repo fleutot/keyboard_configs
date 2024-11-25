@@ -37,26 +37,24 @@
 ;;)
 
 (defalias
-  navD  (tap-hold-next-release 300 d (layer-toggle navigation))
-  navK  (tap-hold-next-release 300 k (layer-toggle navigation))
-  snavE (tap-hold-next-release 300 e (layer-toggle shift_nav))
-  numL  (tap-hold-next-release 300 l (layer-toggle numpad))
-  numS  (tap-hold-next-release 300 s (layer-toggle numpad))
-  specF (tap-hold-next-release 300 f (layer-toggle special))
-  specJ (tap-hold-next-release 300 j (layer-toggle special))
-  funcA (tap-hold-next-release 300 a (layer-toggle functions))
-  intZ  (tap-hold-next-release 300 z (layer-toggle international))
-  sintQ (tap-hold-next-release 300 q (layer-toggle shift_international))
-;;  lsftc (around-when-alone lsft (layer-toggle shift_composed))
-;;  rsftc (around-when-alone rsft (layer-toggle shift_composed))
+  navD  (tap-hold-next-release 300 :grace 25 d (layer-toggle navigation))
+  navK  (tap-hold-next-release 300 :grace 25 k (layer-toggle navigation))
+  snavE (tap-hold-next-release 300 :grace 25 e (layer-toggle shift_nav))
+  numL  (tap-hold-next-release 300 :grace 25 l (layer-toggle numpad))
+  numS  (tap-hold-next-release 300 :grace 25 s (layer-toggle numpad))
+  specF (tap-hold-next-release 300 :grace 25 f (layer-toggle special))
+  specJ (tap-hold-next-release 300 :grace 25 j (layer-toggle special))
+  funcZ (tap-hold-next-release 300 :grace 25 z (layer-toggle functions))
+  intV  (tap-hold-next-release 300 :grace 25 v (layer-toggle international))
+  sintR (tap-hold-next-release 300 :grace 25 r (layer-toggle shift_international))
   xmo   (around rmet (layer-toggle xmonad))
 )
 
 (deflayer qwerty_swe
-  XX     XX    XX     XX    XX     XX     XX   XX     XX    XX    XX   XX   XX   _
-  XX    @sintQ w     @snavE r      t      y    u      i     o     p    XX   XX   XX
-  XX    @funcA @numS  @navD @specF g      h   @specJ @navK @numL  ;    XX   ret
-  lsft  @intZ  x      c     v      b      n    m      ,     .     /   rsft
+  XX     XX    XX     XX    XX     XX     XX     XX     XX    XX    XX   XX   XX   _
+  XX     q     w     @snavE @sintR t      y      u      i     o     p    XX   XX   XX
+  XX     a     @numS  @navD @specF g      h     @specJ @navK @numL  ;    XX   ret
+  lsft  @funcZ x      c     @intV  b      n      m      ,     .     /   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
 )
 
@@ -81,7 +79,7 @@
 
 (deflayer special
   _    _    _    _    _    _    _    _     _    _    _    _    _    _
-  _    `    ~    <    >    |    \    [     ]    {    }    _    _    _
+  _    `    ~    *    =    |    \    [     ]    {    }    _    _    _
   _    !    @    #    $    %    ^    &     \(   \)   ;    _    _
   _    ?    :    \_   -    +    "    '     ,    .    /    _
   _    _    _              _              _      _
@@ -89,16 +87,16 @@
 
 (deflayer navigation
   _    _    _      _     _     _        _        _     _      _     _        _    _    _
-  _    _    _      _     pgup  _        _        home  up     end   _        _    _    _
-  _    tab  tab    _     pgdn  _        C-left   left  down   right C-right  _    _
+  _    _    _      _     _     pgup     _        home  up     end   _        _    _    _
+  _    _    _      _     tab   pgdn     C-left   left  down   right C-right  _    _
   _    _    _      _     _     _        _        C-up  C-down _     _    _
   _    _    _              _                  _       _
 )
 
 (deflayer shift_nav
   _    _    _      _       _     _           _        _       _        _       _          _    _    _
-  _    _    _      _     pgup    _           _        S-home  S-up     S-end   _          _    _    _
-  _    tab  tab    _     pgdn    _        C-S-left S-left  S-down   S-right C-S-right  _    _
+  _    _    _      _       _     _           _        S-home  S-up     S-end   _          _    _    _
+  _    _    _      _       _     _           C-S-left S-left  S-down   S-right C-S-right  _    _
   _    _    _      _       _     _           _        C-S-up  C-S-down _       _    _
   _    _    _              _                 _       _
 )
@@ -109,6 +107,14 @@
   _    f11  f4   f5   f6   _    *    4     5    6     ,    _    _
   _    f10  f1   f2   f3   _    +    1     2    3     .    _
   _    _    _              0              _    _
+)
+
+(deflayer numrow
+  _    _    _    _    _    _       _    _     _    _    _    _    _    _
+  _    1    2    3    4    5       6    7     8    9    0    _    _    _
+  _    _    _    _    _    _       _    _     _    _    _    _    _
+  _    _    _    _    _    _       _    _     _    _    _    _
+  _    _    _              _             _      _
 )
 
 ;; sysrq is actually Print Screen, see kmonad faq.
