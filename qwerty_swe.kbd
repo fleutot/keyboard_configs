@@ -38,22 +38,21 @@
 
 (defalias
   navD  (tap-hold-next-release 300 :grace 25 d (layer-toggle navigation))
-  navK  (tap-hold-next-release 300 :grace 25 k (layer-toggle navigation))
   snavE (tap-hold-next-release 300 :grace 25 e (layer-toggle shift_nav))
   numL  (tap-hold-next-release 300 :grace 25 l (layer-toggle f_keypad))
   numS  (tap-hold-next-release 300 :grace 25 s (layer-toggle numpad))
   specF (tap-hold-next-release 300 :grace 25 f (layer-toggle special))
-  specJ (tap-hold-next-release 300 :grace 25 j (layer-toggle special))
+  specJ (tap-hold-next-release 300 :grace 35 j (layer-toggle special))
   funcZ (tap-hold-next-release 300 :grace 25 z (layer-toggle functions))
-  intV  (tap-hold-next-release 300 :grace 25 v (layer-toggle international))
-  sintR (tap-hold-next-release 300 :grace 25 r (layer-toggle shift_international))
+  intV  (tap-hold-next-release 300 :grace 35 v (layer-toggle international))
+  sintR (tap-hold-next-release 300 :grace 10 r (layer-toggle shift_international))
   xmo   (around rmet (layer-toggle xmonad))
 )
 
 (deflayer qwerty_swe
   XX     XX    XX     XX    XX     XX     XX     XX     XX    XX    XX   XX   XX   _
   XX     q     w     @snavE @sintR t      y      u      i     o     p    XX   XX   XX
-  XX     a     @numS  @navD @specF g      h     @specJ @navK @numL  ;    XX   ret
+  XX     a     @numS  @navD @specF g      h     @specJ  k    @numL  ;    XX   ret
   lsft  @funcZ x      c     @intV  b      n      m      ,     .     /   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
 )
@@ -80,8 +79,8 @@
 (deflayer special
   _    _    _    _    _    _    _    _     _    _    _    _    _    _
   _    `    ~    *    =    |    \    [     ]    {    }    _    _    _
-  _    !    @    #    $    %    ^    &     \(   \)   ;    _    _
-  _    ?    :    \_   -    +    "    '     ,    .    /    _
+  _    !    @    #    $    %    ^    &     \(   \)   :    _    _
+  _    ?    :    \_   -    +    "    '     <    >    ?    _
   _    _    _              _              _      _
 )
 
@@ -89,14 +88,14 @@
   _    _    _      _     _     _        _        _     _      _     _        _    _    _
   _    _    _      _     _     pgup     _        home  up     end   _        _    _    _
   _    _    _      _     tab   pgdn     C-left   left  down   right C-right  _    _
-  _    _    _      _     _     _        _        C-up  C-down _     _    _
+  _    _    _      _     esc   _        _        C-up  C-down _     _    _
   _    _    _              _                  _       _
 )
 
 (deflayer shift_nav
   _    _    _      _       _     _           _        _       _        _       _          _    _    _
-  _    _    _      _       _     _           _        S-home  S-up     S-end   _          _    _    _
-  _    _    _      _       _     _           C-S-left S-left  S-down   S-right C-S-right  _    _
+  _    _    _      _       _     S-pgup      _        S-home  S-up     S-end   _          _    _    _
+  _    _    _      _       S-tab S-pgdn      C-S-left S-left  S-down   S-right C-S-right  _    _
   _    _    _      _       _     _           _        C-S-up  C-S-down _       _    _
   _    _    _              _                 _       _
 )
