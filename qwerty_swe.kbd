@@ -51,7 +51,7 @@
 
 (deflayer qwerty_swe
   XX     XX    XX     XX    XX     XX     XX     XX     XX    XX    XX   XX   XX   _
-  XX     q     w     @snavE @sintR t      y      u      i     o     p    XX   XX   XX
+  XX     q     w      e     @sintR t      y      u      i     o     p    XX   XX   XX
   XX     a     @numS  @navD @specF g      h     @specJ  k    @numL  ;    XX   ret
   lsft  @funcZ x      c     @intV  b      n      m      ,     .     /   rsft
   lctl  @xmo  lalt             spc           ralt   @xmo
