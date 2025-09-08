@@ -87,7 +87,7 @@
 (deflayer navigation
   _    _    _      _     _     _        _        _     _      _     _        _    _    _
   _    _    _      _     _     pgup     _        home  up     end   _        _    _    _
-  _    _    _      _     tab   pgdn     C-left   left  down   right C-right  _    _
+  _    caps _      _     tab   pgdn     C-left   left  down   right C-right  _    _
   _    _    _      _     esc   _        _        C-up  C-down _     _    _
   _    _    _              _                  _       _
 )
