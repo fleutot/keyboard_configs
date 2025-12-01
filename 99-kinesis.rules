@@ -1,1 +1,1 @@
-ACTION=="add", SUBSYSTEM=="input", ENV{ID_VENDOR_ID}=="05f3", ENV{ID_MODEL_ID}=="0007", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/local/bin/start-kinesis-swe.sh"
+ACTION=="add", SUBSYSTEM=="input", ENV{ID_VENDOR_ID}=="05f3", ENV{ID_MODEL_ID}=="0007", KERNEL=="event*", SYMLINK=="*event-kbd", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/local/bin/start-kinesis-swe.sh"
