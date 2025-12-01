@@ -16,5 +16,10 @@ if [ -z "$USER" ]; then
     exit 1
 fi
 
-su "$USER" -c "echo 'Starting kmonad...' >> /tmp/kmonad.log 2>&1 &"
+echo "Starting kmonad..." >> /tmp/kmonad.log 2>&1
+
+# Allow user to write (since starting in user space) and read the log.
+touch /tmp/kmonad.log
+chown "$USER" /tmp/kmonad.log
+
 su "$USER" -c "/home/$USER/src/kmonad/kmonad /home/$USER/keyboard_configs/qwerty_swe.kbd --log-level debug >> /tmp/kmonad.log 2>&1 &"
