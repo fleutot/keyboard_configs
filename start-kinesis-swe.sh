@@ -22,4 +22,5 @@ echo "Starting kmonad..." >> /tmp/kmonad.log 2>&1
 touch /tmp/kmonad.log
 chown "$USER" /tmp/kmonad.log
 
-su "$USER" -c "/home/$USER/src/kmonad/kmonad /home/$USER/keyboard_configs/qwerty_swe.kbd --log-level debug >> /tmp/kmonad.log 2>&1 &"
+# DISPLAY not set when running from udev rule
+su "$USER" -c "DISPLAY=:0 /home/$USER/src/kmonad/kmonad /home/$USER/keyboard_configs/qwerty_swe.kbd --log-level debug >> /tmp/kmonad.log 2>&1 &"
