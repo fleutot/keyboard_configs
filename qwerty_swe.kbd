@@ -127,9 +127,9 @@
 ;; sysrq is actually Print Screen, see kmonad faq.
 (deflayer functions
   _    _    _    _      _       _        _    _     _    _    _     _    _    _
-  _    _    _    C-S-c  C-S-v   _        _    _     _    _    sysrq _    _    _
-  _    _    esc  C-c    C-v     C-x      _    _     _    _    _     _    _
-  _    _    _    caps   _       _        _    _     _    _    _     _
+  _    _    _    C-S-c  C-S-v   _        _    prev  volu next sysrq _    _    _
+  _    _    _    C-c    C-v     C-x      _    _     vold _    _     _    _
+  _    _    _    _      _       _        _    pp    mute _    _     _
   _    _    _              _                _       _
 )
 
