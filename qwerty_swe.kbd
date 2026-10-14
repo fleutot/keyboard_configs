@@ -4,7 +4,7 @@
   ;; input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd") ;; Builtin laptop keyboard
   output (uinput-sink
   	 "KMonad output"
-	 "sleep 0.2s; setxkbmap -option compose:menu")
+	 "sleep 0.8s; setxkbmap -layout us -model pc105 -option compose:menu")
 
   cmp-seq compose
   cmp-seq-delay 1
